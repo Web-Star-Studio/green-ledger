@@ -1,4 +1,5 @@
 import { webConfig } from "@/lib/config";
+import type { HealthBanner } from "@/lib/contracts";
 
 type HealthPayload = Record<string, unknown> | null;
 
@@ -48,4 +49,31 @@ export async function getApiHealth(): Promise<ApiHealthSnapshot> {
       url,
     };
   }
+}
+
+export function buildHealthBanner(snapshot: ApiHealthSnapshot): HealthBanner {
+  if (snapshot.ok) {
+    return {
+      detail: `API answered ${snapshot.status} from ${snapshot.url}`,
+      label: "System",
+      statusText: "Healthy",
+      tone: "success",
+    };
+  }
+
+  if (snapshot.status !== null) {
+    return {
+      detail: snapshot.error ?? "The API returned a non-success status.",
+      label: "System",
+      statusText: "Attention needed",
+      tone: "warning",
+    };
+  }
+
+  return {
+    detail: snapshot.error ?? "The workspace cannot reach the backend right now.",
+    label: "System",
+    statusText: "Offline",
+    tone: "critical",
+  };
 }

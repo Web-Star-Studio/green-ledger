@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "GreenLedger Bootstrap",
-  description: "Technical shell for validating the GreenLedger monorepo bootstrap.",
+  title: {
+    default: "GreenLedger",
+    template: "%s | GreenLedger",
+  },
+  description:
+    "Reports workspace for GreenLedger's ESG reporting MVP, with an elevated canvas shell and technical integration surfaces.",
 };
 
 export default function RootLayout({
@@ -23,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html lang="en-US">
+      <body className={`${manrope.variable} ${plexMono.variable}`}>{children}</body>
     </html>
   );
 }

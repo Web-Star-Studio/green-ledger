@@ -1,48 +1,108 @@
 :root {
-  --background: #f3f1ea;
-  --surface: rgba(255, 255, 255, 0.82);
-  --surface-strong: #ffffff;
-  --foreground: #13211d;
-  --muted: #53635c;
-  --line: rgba(19, 33, 29, 0.12);
-  --accent: #1f8b4c;
-  --accent-soft: rgba(31, 139, 76, 0.12);
-  --accent-strong: #0e5d2d;
-  --danger: #b44e34;
-  --shadow: 0 24px 60px rgba(31, 53, 42, 0.12);
-}
+  --font-sans: var(--font-manrope), "Avenir Next", "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", monospace;
 
-html {
-  height: 100%;
-}
+  --shell-bg: #f5f4ef;
+  --shell-bg-strong: #efede5;
+  --shell-surface: rgba(255, 255, 255, 0.72);
+  --shell-text: #5e665f;
+  --shell-text-strong: #253127;
+  --shell-border: rgba(69, 86, 73, 0.12);
+  --shell-hover: rgba(24, 39, 26, 0.05);
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  --canvas-bg: #ffffff;
+  --canvas-bg-soft: #fcfcfa;
+  --canvas-border: rgba(58, 74, 62, 0.1);
+  --canvas-shadow: 0 1px 2px rgba(16, 24, 40, 0.06),
+    0 18px 40px rgba(38, 49, 39, 0.05);
+  --canvas-radius: 20px;
+  --canvas-gap: 12px;
 
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background:
-    radial-gradient(circle at top left, rgba(31, 139, 76, 0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(16, 87, 55, 0.08), transparent 24%),
-    linear-gradient(180deg, #fbfaf6 0%, var(--background) 100%);
-  font-family: var(--font-geist-sans), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(58, 74, 62, 0.12);
+  --card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --card-radius: 16px;
+
+  --text-primary: #172119;
+  --text-secondary: #667065;
+  --text-tertiary: #889186;
+  --text-inverse: #f6f7f4;
+
+  --accent: #2d6b49;
+  --accent-strong: #1f5136;
+  --accent-soft: #e4f0e8;
+  --accent-wash: rgba(45, 107, 73, 0.1);
+  --accent-line: rgba(45, 107, 73, 0.18);
+
+  --success-bg: #e7f6eb;
+  --success-text: #23683f;
+  --warning-bg: #fbf1dc;
+  --warning-text: #92601e;
+  --critical-bg: #f8e8e6;
+  --critical-text: #a44437;
+  --neutral-bg: #f0f1ed;
+  --neutral-text: #5f665f;
+
+  --focus-ring: 0 0 0 3px rgba(45, 107, 73, 0.18);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --transition-base: 180ms ease;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(45, 107, 73, 0.08), transparent 32%),
+    linear-gradient(180deg, #f6f5f0 0%, #f3f2ed 100%);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: transparent;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(45, 107, 73, 0.16);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
